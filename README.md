@@ -1,4 +1,3 @@
-# crawl-mobilephone
 # install scrapy:
 - pip install Scrapy 
 # crawl data:
