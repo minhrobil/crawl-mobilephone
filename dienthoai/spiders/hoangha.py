@@ -24,6 +24,9 @@ class QuotesSpider(scrapy.Spider):
         # prototypes = response.css('tbody.popup tr').getall()
         item = {}
         name = response.css('section.product-details h1 strong::text').get()
+        # name = name.decode("utf-8", "ignore")
+        # name = ord(name[-1])
+
         url_image = response.css('section.product-details div.head-content img::attr(src)').get()
         price_sale = response.css('section.product-details div.head-content div.product-price span::text').get() 
         leght_array = len(response.css('section.product-details div.simple-prop a::text').getall())
