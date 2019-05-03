@@ -1,5 +1,6 @@
 import scrapy
 from scrapy import Request
+import re
 
 
 class QuotesSpider(scrapy.Spider):
@@ -40,8 +41,12 @@ class QuotesSpider(scrapy.Spider):
         os = response.css('section.product-details div.simple-prop a::text').getall()[start+2]
         cpu = response.css('section.product-details div.simple-prop a::text').getall()[start+3]
         ram = response.css('section.product-details div.simple-prop a::text').getall()[start+4]
+        ram = "".join(re.findall("[0-9]", ram))
+
         camera = response.css('section.product-details div.simple-prop a::text').getall()[start+5]
         rom = response.css('section.product-details div.simple-prop a::text').getall()[start+6]
+        rom = "".join(re.findall("[0-9]", rom))
+
         pin = response.css('section.product-details div.simple-prop a::text').getall()[start+7]
         # gia_ban = response.css("span.nk-price-final::text").get()
         # item.update({"ten_dien_thoai":ten_dien_thoai})

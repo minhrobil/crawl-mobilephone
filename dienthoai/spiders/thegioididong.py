@@ -1,5 +1,6 @@
 import scrapy
 from scrapy import Request
+import re
 
 
 class QuotesSpider(scrapy.Spider):
@@ -59,7 +60,11 @@ class QuotesSpider(scrapy.Spider):
         camera_selfie = response.css("div.box_content ul.parameter li.g29 div::text").get()
         cpu = response.css("div.box_content ul.parameter li.g6059 a::text").get()
         ram = response.css("div.box_content ul.parameter li.g50 div::text").get()
+        ram = "".join(re.findall("[0-9]", ram))
+
         rom = response.css("div.box_content ul.parameter li.g49 div::text").get()
+        rom = "".join(re.findall("[0-9]", rom))
+
         sim = ", ".join(response.css("div.box_content ul.parameter li.g6339_6463 div.isim a::text").getall())
         pin_1 = response.css("div.box_content ul.parameter li.g84_10882 div::text").getall()
         pin_2 = response.css("div.box_content ul.parameter li.g84_10882 a::text").getall()

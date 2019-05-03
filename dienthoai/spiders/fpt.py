@@ -1,5 +1,6 @@
 import scrapy
 from scrapy import Request
+import re
 
 
 class QuotesSpider(scrapy.Spider):
@@ -35,7 +36,11 @@ class QuotesSpider(scrapy.Spider):
         camera_selfie = scrapy.Selector(text=response.css("div.fs-tsright li").getall()[1]).css("span::text").get()
         camera = scrapy.Selector(text=response.css("div.fs-tsright li").getall()[2]).css("span::text").get()
         ram = scrapy.Selector(text=response.css("div.fs-tsright li").getall()[3]).css("span::text").get()
+        ram = "".join(re.findall("[0-9]", ram))
+
         rom = scrapy.Selector(text=response.css("div.fs-tsright li").getall()[4]).css("span::text").get()
+        rom = "".join(re.findall("[0-9]", rom))
+
         cpu = scrapy.Selector(text=response.css("div.fs-tsright li").getall()[5]).css("span::text").get()
         gpu = scrapy.Selector(text=response.css("div.fs-tsright li").getall()[6]).css("span::text").get()
         pin = scrapy.Selector(text=response.css("div.fs-tsright li").getall()[7]).css("span::text").get()
