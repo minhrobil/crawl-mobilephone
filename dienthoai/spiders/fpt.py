@@ -34,7 +34,7 @@ class QuotesSpider(scrapy.Spider):
         price_origin = response.css("p.fs-dtprice del::text").get()
         display = scrapy.Selector(text=response.css("div.fs-tsright li").getall()[0]).css("span::text").get()
         camera_selfie = scrapy.Selector(text=response.css("div.fs-tsright li").getall()[1]).css("span::text").get()
-        camera = scrapy.Selector(text=response.css("div.fs-tsright li").getall()[2]).css("span::text").get()
+        camera = scrapy.Selector(text=response.css("div.fs-tsright li").getall()[2]).css("span::text").get()+' '
         ram = scrapy.Selector(text=response.css("div.fs-tsright li").getall()[3]).css("span::text").get()
         ram = "".join(re.findall("[0-9]", ram))
 

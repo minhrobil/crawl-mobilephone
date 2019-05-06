@@ -56,7 +56,7 @@ class QuotesSpider(scrapy.Spider):
         display_2 = response.css("div.box_content ul.parameter li.g6459_79_77 div::text").getall()
         display = "".join(display_1+display_2)
         os = response.css("div.box_content ul.parameter li.g72 div a::text").get()
-        camera = response.css("div.box_content ul.parameter li.g27 div::text").get()
+        camera = response.css("div.box_content ul.parameter li.g27 div::text").get()+' '
         camera_selfie = response.css("div.box_content ul.parameter li.g29 div::text").get()
         cpu = response.css("div.box_content ul.parameter li.g6059 a::text").get()
         ram = response.css("div.box_content ul.parameter li.g50 div::text").get()
