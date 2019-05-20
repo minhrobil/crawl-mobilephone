@@ -32,6 +32,7 @@ class QuotesSpider(scrapy.Spider):
         name = response.css("h1::text").get()
         price_sale = response.css("p.fs-dtprice ::text").get()
         price_origin = response.css("p.fs-dtprice del::text").get()
+        url_image = response.css("div.fs-dtslb img::attr(src)").get()
         display = scrapy.Selector(text=response.css("div.fs-tsright li").getall()[0]).css("span::text").get()
         camera_selfie = scrapy.Selector(text=response.css("div.fs-tsright li").getall()[1]).css("span::text").get()
         camera = scrapy.Selector(text=response.css("div.fs-tsright li").getall()[2]).css("span::text").get()+' '
