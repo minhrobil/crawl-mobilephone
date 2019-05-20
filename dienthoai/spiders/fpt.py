@@ -48,6 +48,7 @@ class QuotesSpider(scrapy.Spider):
         os = scrapy.Selector(text=response.css("div.fs-tsright li").getall()[8]).css("span::text").get()
         sim = scrapy.Selector(text=response.css("div.fs-tsright li").getall()[9]).css("span::text").get()
         yield {
+            "url_image":url_image,
             "price_origin":price_origin,
             "link":link,
             "name":name,
